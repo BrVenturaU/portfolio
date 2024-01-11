@@ -1,0 +1,25 @@
+---
+import type { SectionItem } from "../../models/SectionModels";
+interface Props extends SectionItem {}
+
+const {
+  title,
+  entityName,
+  achievedOn: [startedOn, finishedOn],
+} = Astro.props;
+---
+
+<article>
+  <h4 class="uppercase font-semibold text-xl">
+    {title}
+  </h4>
+  <h5 class="text-sky-600 text-base font-semibold">{entityName}</h5>
+  <h6 class="text-xs mb-4 uppercase">
+    De {startedOn} a {finishedOn}
+  </h6>
+  <p class="mb-3">
+    <slot name="description" />
+  </p>
+
+  <slot />
+</article>

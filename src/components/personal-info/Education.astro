@@ -1,24 +1,23 @@
 ---
 import Section from "../layout/Section.astro";
 import SectionHeading from "../layout/SectionHeading.astro";
+import SectionItem from "../layout/SectionItem.astro";
 ---
 
 <Section>
   <SectionHeading title="Educación" subtitle="Carrera académica" />
 
-  <!-- TODO: Each item will have the same structure -->
   <div class="">
-    <div>
-      <h4 class="uppercase font-semibold text-xl">
-        Título de Bachillerato Técnico Vocacional en Desarrollo de Software
-      </h4>
-      <h5 class="text-sky-600 text-base font-semibold">INFRAVENZ</h5>
-      <h6 class="text-xs mb-4">GRADUADO EN 2018</h6>
-      <p class="mb-3">
+    <SectionItem
+      title="Título de Bachillerato Técnico Vocacional en Desarrollo de Software"
+      entityName="INFRAVENZ"
+      achievedOn={[2016, 2018]}
+    >
+      <Fragment slot="description">
         Logre mi titulo que me acredita como Tecnico en Desarrollo de Software,
         comprendiendo conocimientos desde desarrollo web hasta analisis, diseño
         e implementacion de sistemas y aplicaciones moviles
-      </p>
-    </div>
+      </Fragment>
+    </SectionItem>
   </div>
 </Section>

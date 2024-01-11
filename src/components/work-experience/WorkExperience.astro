@@ -1,0 +1,21 @@
+---
+import Section from "../layout/Section.astro";
+import SectionHeading from "../layout/SectionHeading.astro";
+import WorkExperienceItem from "./WorkExperienceItem.astro";
+---
+
+<Section>
+  <SectionHeading title="Experiencia de Trabajo" subtitle="Trabajos Previos" />
+
+  <div class="">
+    <WorkExperienceItem
+      title="Backend developer"
+      entityName="ACOMI de RL"
+      achievedOn={[2020, 2021]}
+      job={{
+        id: 1,
+        description: "Desarrollo de web API REST con C# y .Net Core 3.1."
+      }}
+    />
+  </div>
+</Section>

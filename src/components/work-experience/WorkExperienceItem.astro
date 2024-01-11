@@ -1,0 +1,51 @@
+---
+import type { Job } from "../../models/JobModels";
+import type { SectionItem as SectionItemModel } from "../../models/SectionModels";
+import SectionItem from "../layout/SectionItem.astro";
+import ItemDetails from "./ItemDetails.astro";
+interface Props extends SectionItemModel {
+  job: Job;
+}
+
+const { title, entityName, achievedOn, job } = Astro.props;
+
+const hasResponsabilities =
+  job.responsabilities && job.responsabilities.length > 0;
+const hasProjects = job.projects && job.projects.length > 0;
+const hasTechnologies = job.technologies && job.technologies.length > 0;
+---
+
+<SectionItem title={title} entityName={entityName} achievedOn={achievedOn}>
+  <Fragment slot="description">
+    {job.description}
+  </Fragment>
+
+  {
+    hasResponsabilities && (
+      <ItemDetails
+        title="Responsabilidades del puesto:"
+        details={job.responsabilities}
+      />
+    )
+  }
+
+  {
+    hasProjects && (
+      <Fragment>
+        <p class="font-bold">Colaboración en proyectos:</p>
+        {job.projects.map((project) => (
+          <ItemDetails
+            title={project.name}
+            details={project.responsabilities}
+          />
+        ))}
+      </Fragment>
+    )
+  }
+
+  {
+    hasTechnologies && (
+      <ItemDetails title="Tecnologías utilizadas:" details={job.technologies} />
+    )
+  }
+</SectionItem>

@@ -1,0 +1,11 @@
+---
+const { title, details } = Astro.props;
+---
+
+<div>
+  <p class="font-bold">{title}</p>
+
+  <ul class="ml-8 list-disc">
+    {details.map((detail) => <li>{detail}</li>)}
+  </ul>
+</div>
