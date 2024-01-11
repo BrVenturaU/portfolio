@@ -1,16 +1,58 @@
 ---
-
+import Header from "../components/Header.astro";
+import "../assets/styles/ionicons.css";
+import PersonalInfo from "../components/personal-info/PersonalInfo.astro";
+import About from "../components/personal-info/About.astro";
+import WorkExperience from "../components/personal-info/WorkExperience.astro";
+import Education from "../components/personal-info/Education.astro";
+import Technologies from "../components/personal-info/Technologies.astro";
+/*
+  TODO:
+  - Work in the base design and layout.
+  - Style accordingly to the reference design.
+  - Create more components.
+  - Work in the responsive design.
+  - Add content (collections and individuals) languages (en, es).
+*/
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body class="bg-gray-100">
+    <Header />
+
+    <main>
+      <PersonalInfo />
+
+      <div class="bg-white">
+        <About />
+      </div>
+
+      <div>
+        <WorkExperience />
+      </div>
+
+      <div class="bg-white">
+        <Education />
+      </div>
+
+      <div>
+        <Technologies />
+      </div>
+    </main>
+
+    <footer class="mt-4 bg-sky-700 text-white font-bold p-8">
+      <p class="text-center">
+        Portafolio por <a href="https://github.com/BrVenturaU/" target="_blank"
+          >Brandon Ventura</a
+        >
+      </p>
+    </footer>
+  </body>
 </html>

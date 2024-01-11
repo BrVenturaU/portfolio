@@ -1,0 +1,11 @@
+---
+const {url, icon} = Astro.props
+---
+
+<li
+  class="flex items-center justify-center size-10 text-white bg-gray-500 text-center rounded-full"
+>
+  <a href={url} target="_blank"
+    ><i class={icon}></i></a
+  >
+</li>

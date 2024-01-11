@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import profileImg from "../../assets/images/profile.jpg";
+import Social from "../Social.astro";
+---
+
+<section class="bg-white m-4 pb-8 px-4">
+  <div class="rounded-full overflow-hidden size-48 mx-auto relative mt-44 -mb-20 -top-24">
+    <Image src={profileImg} alt="A front face profile image." class="w-full" />
+  </div>
+  <h1 class="text-4xl font-bold text-center">Brandon Ventura</h1>
+  <h2 class="text-2xl text-sky-600 text-center">
+    Tecnico en Desarrollo de Software
+  </h2>
+  <dl class="my-8 text-center">
+    <div class="flex gap-1 justify-center">
+      <dt class="font-bold uppercase">Nacimiento:</dt>
+      <dd>16 de enero del 2000</dd>
+    </div>
+
+    <div class="flex gap-1 justify-center">
+      <dt class="font-bold uppercase">Correo:</dt>
+      <dd>brandonventura16@gmail.com</dd>
+    </div>
+
+    <div class="flex gap-1 justify-center">
+      <dt class="font-bold uppercase">Estado familiar:</dt>
+      <dd>Soltero</dd>
+    </div>
+  </dl>
+  <Social />
+</section>

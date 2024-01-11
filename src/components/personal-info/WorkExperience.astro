@@ -1,0 +1,28 @@
+---
+import Section from "../layout/Section.astro";
+import SectionHeading from "../layout/SectionHeading.astro";
+---
+
+<Section>
+  <SectionHeading title="Experiencia de Trabajo" subtitle="Trabajos Previos" />
+
+  <!-- TODO: Each item will have the same structure -->
+  <div class="">
+    <div>
+      <h4 class="uppercase font-semibold text-xl">Backend developer</h4>
+      <h5 class="text-sky-600 text-base font-semibold">ACOMI de RL</h5>
+      <h6 class="text-xs mb-4">JUNIO 2020</h6>
+
+      <p class="mb-3">Desarrollo de web API REST con C# y .Net Core 3.1.</p>
+      <ul class="ml-8 list-disc">
+        <li>Manejo de Token JWT.</li>
+        <li>CORS.</li>
+        <li>
+          Interacción con servicios de administración de correos como Mailtrap
+          (testing) y SendGrid.
+        </li>
+        <li>Documentación con Swagger.</li>
+      </ul>
+    </div>
+  </div>
+</Section>
