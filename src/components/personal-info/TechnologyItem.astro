@@ -1,14 +1,15 @@
 ---
 import { Image } from "astro:assets";
 
-const {image} = Astro.props
-
+const { image } = Astro.props;
 ---
 
-<div class="p-4 sm:p-5 rounded-xl bg-body border border-box-border group bg-white">
-    <Image
-      src={image.imageImport()}
-      alt={image.fileName}
-      class="h-8 sm:h-10 w-auto ease-linear duration-200 grayscale group-hover:!grayscale-0 group-hover:scale-110"
-    />
-  </div>
+<div
+  class="p-4 sm:p-5 rounded-xl bg-body border border-box-border group bg-white"
+>
+  <Image
+    src={image.imageImport()}
+    alt={image.fileName}
+    class="h-8 sm:h-10 w-auto ease-linear duration-200 grayscale group-hover:!grayscale-0 group-hover:scale-110"
+  />
+</div>

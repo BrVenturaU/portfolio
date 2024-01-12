@@ -1,21 +1,35 @@
 ---
 import Section from "../layout/Section.astro";
+import SectionBody from "../layout/SectionBody.astro";
 import SectionHeading from "../layout/SectionHeading.astro";
 import WorkExperienceItem from "./WorkExperienceItem.astro";
 ---
 
 <Section>
-  <SectionHeading title="Experiencia de Trabajo" subtitle="Trabajos Previos" />
+  <SectionHeading title="Experiencia de laboral" subtitle="Trabajos Previos" />
 
-  <div class="">
+  <SectionBody
+    className="md:relative md:before:absolute md:before:top-1.5 md:before:bottom-0 md:before:w-0.5 md:before:-left-5 md:before:bg-gray-300"
+  >
     <WorkExperienceItem
+      className="md:pl-2 md:relative md:before:absolute md:before:size-4 md:before:bg-yellow-500 md:before:shadow-[0_0_0_8px_rgba(255,171,0,0.4)] md:before:rounded-lg md:before:top-1.5 md:before:-left-[1.7rem]"
       title="Backend developer"
       entityName="ACOMI de RL"
       achievedOn={[2020, 2021]}
       job={{
         id: 1,
-        description: "Desarrollo de web API REST con C# y .Net Core 3.1."
+        description: "Desarrollo de web API REST con C# y .Net Core 3.1.",
       }}
     />
-  </div>
+    <WorkExperienceItem
+      className="md:pl-2 md:relative md:before:absolute md:before:size-4 md:before:bg-yellow-500 md:before:shadow-[0_0_0_8px_rgba(255,171,0,0.4)] md:before:rounded-lg md:before:top-1.5 md:before:-left-[1.7rem]"
+      title="Backend developer"
+      entityName="ACOMI de RL"
+      achievedOn={[2020, 2021]}
+      job={{
+        id: 1,
+        description: "Desarrollo de web API REST con C# y .Net Core 3.1.",
+      }}
+    />
+  </SectionBody>
 </Section>

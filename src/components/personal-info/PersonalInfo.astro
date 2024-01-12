@@ -4,8 +4,12 @@ import profileImg from "../../assets/images/profile.jpg";
 import Social from "../Social.astro";
 ---
 
-<section class="bg-white m-4 mb-10 pb-8 px-4 rounded-md shadow-sm">
-  <div class="rounded-full overflow-hidden size-48 mx-auto relative mt-44 -mb-20 -top-24 shadow shadow-black">
+<section
+  class="bg-white mx-4 mb-10 mt-44 pb-8 px-4 rounded-md shadow-sm sm:w-10/12 sm:mx-auto md:w-9/12 md:mt-32 lg:w-7/12 xl:w-6/12"
+>
+  <div
+    class="rounded-full overflow-hidden size-48 mx-auto relative -mb-20 -top-24 shadow shadow-black"
+  >
     <Image src={profileImg} alt="A front face profile image." class="w-full" />
   </div>
   <h1 class="text-4xl font-bold text-center">Brandon Ventura</h1>

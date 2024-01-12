@@ -7,7 +7,7 @@ interface Props extends SectionItemModel {
   job: Job;
 }
 
-const { title, entityName, achievedOn, job } = Astro.props;
+const { className, title, entityName, achievedOn, job } = Astro.props;
 
 const hasResponsabilities =
   job.responsabilities && job.responsabilities.length > 0;
@@ -15,7 +15,12 @@ const hasProjects = job.projects && job.projects.length > 0;
 const hasTechnologies = job.technologies && job.technologies.length > 0;
 ---
 
-<SectionItem title={title} entityName={entityName} achievedOn={achievedOn}>
+<SectionItem
+  className={className}
+  title={title}
+  entityName={entityName}
+  achievedOn={achievedOn}
+>
   <Fragment slot="description">
     {job.description}
   </Fragment>

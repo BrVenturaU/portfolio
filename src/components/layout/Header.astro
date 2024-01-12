@@ -2,7 +2,9 @@
 import InfoItem from "./HeaderInfo.astro";
 ---
 
-<header class="bg-sky-700 mx-4 mt-4 pt-7 pb-5 px-5 text-white rounded-md">
+<header
+  class="bg-sky-700 mx-4 mt-4 pt-7 pb-5 px-5 text-white rounded-md shadow sm:w-10/12 sm:mx-auto sm:grid sm:grid-cols-2 lg:w-11/12 lg:grid-cols-3"
+>
   <InfoItem
     icon="ion-ios-location-outline"
     title="El Salvador"
@@ -10,12 +12,14 @@ import InfoItem from "./HeaderInfo.astro";
   />
 
   <InfoItem
+    className="justify-self-center"
     icon="ion-ios-telephone-outline"
     title="7352 1562"
     description="Lunes/Sabado | 8:00 AM - 5:00 PM"
   />
 
   <InfoItem
+    className="justify-self-end"
     icon="ion-ios-chatboxes-outline"
     title="brandonventura16@gmail.com"
     description="Respondo en 24 horas"

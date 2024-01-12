@@ -3,13 +3,16 @@ import type { SectionItem } from "../../models/SectionModels";
 interface Props extends SectionItem {}
 
 const {
+  className,
   title,
   entityName,
   achievedOn: [startedOn, finishedOn],
 } = Astro.props;
 ---
 
-<article>
+<article
+  class:list={[className]}
+>
   <h4 class="uppercase font-semibold text-xl">
     {title}
   </h4>
