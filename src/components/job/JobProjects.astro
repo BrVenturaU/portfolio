@@ -12,7 +12,7 @@ const { projects } = Astro.props;
   <ul class="pl-3 sm:grid sm:grid-cols-2 sm:gap-3">
     {
       projects.map((project) => (
-        <li class="project grid grid-rows-1 items-center gap-4 h-36 my-3 p-3 shadow shadow-gray-400 rounded cursor-pointer group md:my-0">
+        <li class="project grid grid-rows-1 items-center gap-4 h-36 my-3 p-3 shadow shadow-gray-400 rounded cursor-pointer motion-safe:animate-pulse md:my-0">
           <p class="project__name font-bold text-center">{project.name}</p>
           <ul class="project__responsabilities pl-8 list-disc text-sm hidden">
             {project.responsabilities.map((responsability) => (
@@ -50,6 +50,7 @@ const { projects } = Astro.props;
       el.addEventListener("click", () => {
         el.scrollTo({ top: 0 });
         flip(() => {
+          el.classList.toggle("motion-safe:animate-pulse");
           el.classList.toggle("pt-7");
           el.classList.toggle("overflow-y-scroll");
           projectResponsabilities[i].classList.toggle("hidden");

@@ -1,0 +1,30 @@
+---
+import type { Job } from "../../models/JobModels";
+import type { SectionItem as SectionItemModel } from "../../models/SectionModels";
+import SectionItem from "../layout/SectionItem.astro";
+import JobProjects from "./JobProjects.astro";
+import JobTechs from "./JobTechs.astro";
+import JobResponsabilities from "./JobResponsabilities.astro";
+interface Props extends SectionItemModel {
+  job: Job;
+}
+
+const { className, title, entityName, achievedOn, job } = Astro.props;
+---
+
+<SectionItem
+  className={className}
+  title={title}
+  entityName={entityName}
+  achievedOn={achievedOn}
+>
+  <Fragment slot="description">
+    {job.description}
+  </Fragment>
+
+  <JobResponsabilities responsabilities={job.responsabilities} />
+
+  <JobProjects projects={job.projects} />
+
+  <JobTechs technologies={job.technologies} />
+</SectionItem>

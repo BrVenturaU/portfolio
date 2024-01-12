@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import WorkExperienceItem from "../../components/work-experience/WorkExperienceItem.astro";
+import Job from "../../components//job/Job.astro";
 import BaseTemplate from "../../templates/BaseTemplate.astro";
 import bgImage from "../../assets/images/background.jpg";
 export async function getStaticPaths() {
@@ -22,7 +22,7 @@ const { job } = Astro.params;
         </div>
 
         <div class="px-8 py-6 md:col-span-5 lg:col-span-3">
-          <WorkExperienceItem
+          <Job
             title="Backend developer"
             entityName="ACOMI de RL"
             achievedOn={[2020, 2021]}
