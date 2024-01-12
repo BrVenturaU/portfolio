@@ -28,7 +28,9 @@ const images = Object.keys(imagesData).map((imagePath) => {
     subtitle="Lenguajes, frameworks y herramientas"
   />
 
-  <SectionBody className="flex justify-center flex-wrap gap-4">
+  <SectionBody
+    className="technologies flex justify-center flex-wrap gap-4 duration-300 transition-all translate-y-2/4 opacity-0"
+  >
     {
       images.map((image) => {
         return <TechnologyItem image={image} />;
@@ -36,3 +38,22 @@ const images = Object.keys(imagesData).map((imagePath) => {
     }
   </SectionBody>
 </Section>
+
+<script>
+  const technologiesEl = document.querySelector(".technologies");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("translate-y-2/4", "opacity-0");
+          observer.disconnect();
+        }
+      });
+    },
+    {
+      threshold: 0.4,
+    }
+  );
+
+  observer.observe(technologiesEl);
+</script>

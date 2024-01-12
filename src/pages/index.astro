@@ -1,11 +1,14 @@
 ---
 import Header from "../components/layout/Header.astro";
-import "../assets/styles/ionicons.css";
 import PersonalInfo from "../components/personal-info/PersonalInfo.astro";
 import About from "../components/personal-info/About.astro";
 import WorkExperience from "../components/work-experience/WorkExperience.astro";
 import Education from "../components/personal-info/Education.astro";
 import Technologies from "../components/personal-info/Technologies.astro";
+import "../assets/styles/index.css";
+import "../assets/styles/ionicons.css";
+
+import bgImage from "../assets/images/background.jpg";
 /*
   TODO:
   - Add content (collections and individuals) languages (en, es).
@@ -21,31 +24,29 @@ import Technologies from "../components/personal-info/Technologies.astro";
     <title>Astro</title>
   </head>
   <body class="bg-gray-100">
+    <img src={bgImage.src} alt="Bg" class="size-full absolute top-0 -z-10 blur-sm" />
+
     <Header />
 
     <main>
       <PersonalInfo />
-
       <div class="bg-white">
         <About />
       </div>
-
       <div class="bg-slate-950 text-white">
         <Education />
       </div>
-
       <div class="bg-white">
         <WorkExperience />
       </div>
-
       <div class="bg-slate-950 text-white">
         <Technologies />
       </div>
     </main>
-
     <footer class="bg-sky-700 text-white font-bold p-8">
       <p class="text-center">
-        <a class="text-2xl"
+        <a
+          class="text-2xl"
           href="https://www.linkedin.com/in/brandon-manuel-v-584455124/"
           target="_blank">Brandon Ventura</a
         >
