@@ -40,20 +40,22 @@ const images = Object.keys(imagesData).map((imagePath) => {
 </Section>
 
 <script>
-  const technologiesEl = document.querySelector(".technologies");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.remove("translate-y-2/4", "opacity-0");
-          observer.disconnect();
-        }
-      });
-    },
-    {
-      threshold: 0.4,
-    }
-  );
+  document.addEventListener("astro:page-load", () => {
+    const technologiesEl = document.querySelector(".technologies");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("translate-y-2/4", "opacity-0");
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        threshold: 0.4,
+      }
+    );
 
-  observer.observe(technologiesEl);
+    observer.observe(technologiesEl);
+  });
 </script>
