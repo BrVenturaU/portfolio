@@ -1,0 +1,14 @@
+---
+const { technologies } = Astro.props;
+---
+
+<div>
+  <h6 class="mb-2 font-semibold text-sky-600">Tecnologías utilizadas:</h6>
+  <ul class="pl-3 flex flex-wrap gap-2 text-sm">
+    {
+      technologies.map((detail) => (
+        <li class="bg-sky-700 text-white p-1 rounded-md">{detail}</li>
+      ))
+    }
+  </ul>
+</div>

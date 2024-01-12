@@ -1,29 +1,45 @@
 ---
+import { Image } from "astro:assets";
+import BaseTemplate from "../templates/BaseTemplate.astro";
+
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
 import PersonalInfo from "../components/personal-info/PersonalInfo.astro";
 import About from "../components/personal-info/About.astro";
 import WorkExperience from "../components/work-experience/WorkExperience.astro";
 import Education from "../components/personal-info/Education.astro";
 import Technologies from "../components/personal-info/Technologies.astro";
+import bgImage from "../assets/images/background.jpg";
 
-import BaseTemplate from "../templates/BaseTemplate.astro";
 /*
   TODO:
   - Add content (collections and individuals) languages (en, es).
 */
 ---
 
-<BaseTemplate pageTitle="Inicio" showBgImage>
-  <PersonalInfo />
-  <div class="bg-white">
-    <About />
-  </div>
-  <div class="bg-slate-950 text-white">
-    <Education />
-  </div>
-  <div class="bg-white">
-    <WorkExperience />
-  </div>
-  <div class="bg-slate-950 text-white">
-    <Technologies />
-  </div>
+<BaseTemplate pageTitle="Inicio">
+  <Image
+    src={bgImage}
+    alt="A desktop computer with a laptop on the side."
+    class="size-full absolute top-0 -z-10 blur-sm"
+  />
+
+  <Header />
+
+  <main transition:animate="slide" >
+    <PersonalInfo />
+    <div class="bg-white">
+      <About />
+    </div>
+    <div class="bg-slate-950 text-white">
+      <Education />
+    </div>
+    <div class="bg-white">
+      <WorkExperience />
+    </div>
+    <div class="bg-slate-950 text-white">
+      <Technologies />
+    </div>
+  </main>
+  <Footer />
 </BaseTemplate>

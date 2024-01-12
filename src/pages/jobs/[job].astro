@@ -1,0 +1,100 @@
+---
+import { Image } from "astro:assets";
+import WorkExperienceItem from "../../components/work-experience/WorkExperienceItem.astro";
+import BaseTemplate from "../../templates/BaseTemplate.astro";
+import bgImage from "../../assets/images/background.jpg";
+export async function getStaticPaths() {
+  return [{ params: { job: 1 } }];
+}
+const { job } = Astro.params;
+---
+
+<BaseTemplate pageTitle={job} showBgImage>
+  <main transition:animate="slide" class="h-dvh">
+    <div class="bg-white">
+      <section class="md:grid md:grid-cols-8 lg:grid-cols-5">
+        <div class="md:col-span-3 lg:col-span-2">
+          <Image
+            src={bgImage}
+            alt="A desktop computer with a laptop on the side."
+            class="h-full object-cover"
+          />
+        </div>
+
+        <div class="px-8 py-6 md:col-span-5 lg:col-span-3">
+          <WorkExperienceItem
+            title="Backend developer"
+            entityName="ACOMI de RL"
+            achievedOn={[2020, 2021]}
+            job={{
+              id: 1,
+              description: "Desarrollo de web API REST con C# y .Net Core 3.1.",
+              responsabilities: [
+                "Desarrollo de Web API con .NET Core 3.1.",
+                "Desarrollo de pruebas unitarias con Visual Studio Tools.",
+                "Documentación de Web API con Swagger",
+                "Token JWT para la administración de las sesiones de usuario.",
+                "Integración de MFA con técnicas y mecanismos de autenticación como: administración de dispositivos, autenticación biométrica, confirmación por correo electrónico y selección de imágenes",
+              ],
+              technologies: [
+                ".NET Core 3.1",
+                "Entity Framework Core ORM",
+                "Swagger",
+                "CSV Helper",
+                "JWT tokens",
+                "UnitTesting Tools and Moq",
+                "SQL Server",
+                "Twilio Sendgrid",
+                "Git y GitHub para versionado de código",
+              ],
+              projects: [
+                {
+                  id: 1,
+                  name: "Proyecto 1 (Confidencial)",
+                  responsabilities: [
+                    "Desarrollador Backend .NET.",
+                    "Asistencia a reuniones presenciales.",
+                    "Documentación de Web API.",
+                    "Integración de paquetes y librerías.",
+                    "Análisis e implementación de Casos de Uso.",
+                    "Diseño y modelado de base de datos.",
+                    "Creación de base de datos utilizando la técnica Code First.",
+                    "Control de versión del código.",
+                  ],
+                },
+                {
+                  id: 1,
+                  name: "Proyecto 1 (Confidencial)",
+                  responsabilities: [
+                    "Desarrollador Backend .NET.",
+                    "Asistencia a reuniones presenciales.",
+                    "Documentación de Web API.",
+                    "Integración de paquetes y librerías.",
+                    "Análisis e implementación de Casos de Uso.",
+                    "Diseño y modelado de base de datos.",
+                    "Creación de base de datos utilizando la técnica Code First.",
+                    "Control de versión del código.",
+                  ],
+                },
+                {
+                  id: 1,
+                  name: "Proyecto 1 (Confidencial)",
+                  responsabilities: [
+                    "Desarrollador Backend .NET.",
+                    "Asistencia a reuniones presenciales.",
+                    "Documentación de Web API.",
+                    "Integración de paquetes y librerías.",
+                    "Análisis e implementación de Casos de Uso.",
+                    "Diseño y modelado de base de datos.",
+                    "Creación de base de datos utilizando la técnica Code First.",
+                    "Control de versión del código.",
+                  ],
+                },
+              ],
+            }}
+          />
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseTemplate>

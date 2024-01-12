@@ -1,11 +1,7 @@
 ---
-const { title, details } = Astro.props;
+const {details, className } = Astro.props;
 ---
 
-<div>
-  <p class="font-bold">{title}</p>
-
-  <ul class="ml-8 list-disc">
-    {details.map((detail) => <li>{detail}</li>)}
-  </ul>
-</div>
+<ul class:list={["ml-8 list-disc", className]}>
+  {details.map((detail) => <li>{detail}</li>)}
+</ul>

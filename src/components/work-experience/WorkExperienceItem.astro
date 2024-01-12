@@ -2,12 +2,15 @@
 import type { Job } from "../../models/JobModels";
 import type { SectionItem as SectionItemModel } from "../../models/SectionModels";
 import SectionItem from "../layout/SectionItem.astro";
+import ExperienceItemProjects from "./ExperienceItemProjects.astro";
+import ExperienceItemTechs from "./ExperienceItemTechs.astro";
 import ItemDetails from "./ItemDetails.astro";
 interface Props extends SectionItemModel {
+  showLink?: boolean;
   job: Job;
 }
 
-const { className, title, entityName, achievedOn, job } = Astro.props;
+const { className, showLink, title, entityName, achievedOn, job } = Astro.props;
 
 const hasResponsabilities =
   job.responsabilities && job.responsabilities.length > 0;
@@ -21,40 +24,32 @@ const hasTechnologies = job.technologies && job.technologies.length > 0;
   entityName={entityName}
   achievedOn={achievedOn}
 >
-  <a
-    class="flex justify-center items-center size-9 absolute top-1/2 right-0 translate-x-3 -translate-y-1/2 md:translate-x-1/2 cursor-pointer text-2xl text-white bg-sky-600 rounded-full transition-all duration-100 outline outline-2 outline-gray-300 hover:bg-sky-300 hover:outline-offset-2"
-    ><span class="ion-eye"></span></a
-  >
+  {
+    showLink && (
+      <a
+        href={`/jobs/${job.id}`}
+        class="flex justify-center items-center size-9 absolute top-1/2 right-0 translate-x-3 -translate-y-1/2 md:translate-x-1/2 cursor-pointer text-2xl text-white bg-sky-600 rounded-full transition-all duration-100 outline outline-2 outline-gray-300 hover:bg-sky-300 hover:outline-offset-2"
+      >
+        <span class="ion-eye" />
+      </a>
+    )
+  }
   <Fragment slot="description">
     {job.description}
   </Fragment>
 
   {
     hasResponsabilities && (
-      <ItemDetails
-        title="Responsabilidades del puesto:"
-        details={job.responsabilities}
-      />
+      <div class="my-4">
+        <h6 class="font-semibold text-sky-600">
+          Responsabilidades del puesto:
+        </h6>
+        <ItemDetails details={job.responsabilities} />
+      </div>
     )
   }
 
-  {
-    hasProjects && (
-      <Fragment>
-        <p class="font-bold">Colaboración en proyectos:</p>
-        {job.projects.map((project) => (
-          <ItemDetails
-            title={project.name}
-            details={project.responsabilities}
-          />
-        ))}
-      </Fragment>
-    )
-  }
+  {hasProjects && <ExperienceItemProjects projects={job.projects} />}
 
-  {
-    hasTechnologies && (
-      <ItemDetails title="Tecnologías utilizadas:" details={job.technologies} />
-    )
-  }
+  {hasTechnologies && <ExperienceItemTechs technologies={job.technologies} />}
 </SectionItem>
