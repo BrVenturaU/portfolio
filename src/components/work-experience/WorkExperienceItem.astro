@@ -21,6 +21,10 @@ const hasTechnologies = job.technologies && job.technologies.length > 0;
   entityName={entityName}
   achievedOn={achievedOn}
 >
+  <a
+    class="flex justify-center items-center size-9 absolute top-1/2 right-0 translate-x-3 -translate-y-1/2 md:translate-x-1/2 cursor-pointer text-2xl text-white bg-sky-600 rounded-full transition-all duration-100 outline outline-2 outline-gray-300 hover:bg-sky-300 hover:outline-offset-2"
+    ><span class="ion-eye"></span></a
+  >
   <Fragment slot="description">
     {job.description}
   </Fragment>

@@ -1,0 +1,45 @@
+---
+import { ViewTransitions } from "astro:transitions";
+
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import "../assets/styles/index.css";
+import "../assets/styles/ionicons.css";
+
+import bgImage from "../assets/images/background.jpg";
+/*
+TODO:
+- Add content (collections and individuals) languages (en, es).
+*/
+const { pageTitle, showBgImage = false } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{`Portafolio | ${pageTitle}`}</title>
+
+    <ViewTransitions />
+  </head>
+  <body class="bg-gray-100">
+    {
+      showBgImage && (
+        <img
+          src={bgImage.src}
+          alt="Bg"
+          class="size-full absolute top-0 -z-10 blur-sm"
+        />
+      )
+    }
+
+    <Header />
+
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

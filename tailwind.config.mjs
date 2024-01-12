@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       animation: {
-        "slide-down": "slide-down var(--a-duration) var(--a-delay) ease-in 1 both",
+        "slide-down":
+          "slide-down var(--a-duration) var(--a-delay) ease-in 1 both",
       },
       keyframes: {
         "slide-down": {

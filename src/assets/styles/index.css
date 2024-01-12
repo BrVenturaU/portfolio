@@ -34,6 +34,11 @@
     animation-duration:var(--a-duration);
   }
 
+  .animate-duration-250 {
+    --a-duration: 250ms;
+    animation-duration:var(--a-duration);
+  }
+
   .animate-duration-300 {
     --a-duration: 300ms;
     animation-duration: var(--a-duration);
@@ -59,28 +64,13 @@
     animation-delay: var(--a-delay);
   }
 
-  .animate-delay-300 {
-    --a-delay: 300ms;
+  .animate-delay-250 {
+    --a-delay: 250ms;
     animation-delay: var(--a-delay);
   }
 
-  .animate-stagger-0{
-    --a-index: 0;
-    --a-delay: calc(var(--a-duration, 0) * var(--a-index))
-  }
-
-  .animate-stagger-1{
-    --a-index: 1;
-    --a-delay: calc(var(--a-duration, 0) * var(--a-index))
-  }
-
-  .animate-stagger-2{
-    --a-index: 2;
-    --a-delay: calc(var(--a-duration, 0) * var(--a-index))
-  }
-
-  .animate-stagger-3{
-    --a-index: 3;
-    --a-delay: calc(var(--a-duration, 0) * var(--a-index))
+  .animate-delay-300 {
+    --a-delay: 300ms;
+    animation-delay: var(--a-delay);
   }
 }
