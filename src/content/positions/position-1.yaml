@@ -1,0 +1,11 @@
+id: 1
+title: Backend Developer
+entity:
+  name: Acomi de R.L
+  image:
+    url: "/assets/images/companies/company_acomi.jpg"
+    alt: The image contain a bank building with the company name on the front.
+achievedOn:
+  - 2020
+  - 2021
+job: job-1

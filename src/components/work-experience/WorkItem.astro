@@ -3,22 +3,22 @@ import type { Job } from "../../models/JobModels";
 import type { SectionItem as SectionItemModel } from "../../models/SectionModels";
 import SectionItem from "../layout/SectionItem.astro";
 interface Props extends SectionItemModel {
-  showLink?: boolean;
+  link: string;
   job: Job;
 }
 
-const { className, title, entityName, achievedOn, job } = Astro.props;
+const { className, title, entityName, achievedOn, job, link, id } = Astro.props;
 ---
 
 <SectionItem
-  id={`job-${job.id}`}
+  id={id}
   className={className}
   title={title}
   entityName={entityName}
   achievedOn={achievedOn}
 >
   <a
-    href={`/jobs/${job.id}`}
+    href={link}
     class="flex justify-center items-center size-9 absolute top-1/2 right-0 translate-x-3 -translate-y-1/2 md:translate-x-1/2 cursor-pointer text-2xl text-white bg-sky-600 rounded-full transition-all duration-100 outline outline-2 outline-gray-300 hover:bg-sky-300 hover:outline-offset-2"
   >
     <span class="ion-eye"></span>

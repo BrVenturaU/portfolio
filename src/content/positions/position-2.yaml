@@ -1,0 +1,11 @@
+id: 2
+title: Web Developer
+entity:
+  name: A&B POS SOLUTIONS
+  image:
+    url: "/assets/images/companies/company_abposus.jpg"
+    alt: The image is the logo of the company/entity being A&B POS SOLUTIONS.
+achievedOn:
+  - 2021
+  - 2022
+job: job-2

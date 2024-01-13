@@ -1,35 +1,65 @@
 ---
+import {
+  getCollection,
+  getEntries,
+  getEntry,
+  type CollectionEntry,
+} from "astro:content";
 import Section from "../layout/Section.astro";
 import SectionBody from "../layout/SectionBody.astro";
 import SectionHeading from "../layout/SectionHeading.astro";
 import WorkExperienceItem from "./WorkItem.astro";
+import type { Position as PositionModel } from "../../models/JobModels";
+
+const positionCollection: CollectionEntry<"positions">[] =
+  await getCollection("positions");
+const jobCollection: CollectionEntry<"jobs">[] = [];
+
+for (const position of positionCollection) {
+  const jobEntry = await getEntry("jobs", position.data.job);
+  jobCollection.push(jobEntry);
+}
+
+const positions = positionCollection.map((positionEntry) => {
+  const positionJobEntry = jobCollection.find(
+    (job) => job.id === positionEntry.data.job
+  );
+
+  const position: PositionModel = {
+    id: positionEntry.data.id,
+    title: positionEntry.data.title,
+    entity: positionEntry.data.entity,
+    achievedOn: positionEntry.data.achievedOn,
+    job: {
+      id: positionJobEntry?.data.id,
+      description: positionJobEntry?.data.description,
+    },
+  };
+
+  return { ...position, entryId: positionEntry.id };
+});
 ---
 
-<Section>
+<Section id="positions">
   <SectionHeading title="Experiencia de laboral" subtitle="Trabajos Previos" />
 
   <SectionBody
     className="md:relative md:before:absolute md:before:top-1.5 md:before:bottom-0 md:before:w-0.5 md:before:-left-5 md:before:bg-gray-300 lg:before:-left-10"
   >
-    <WorkExperienceItem
-      className="p-4 mb-6 shadow rounded-lg relative md:before:absolute md:before:size-4 md:before:bg-yellow-500 md:before:shadow-[0_0_0_8px_rgba(255,171,0,0.4)] md:before:rounded-lg md:before:top-1.5 md:before:-left-[1.7rem] lg:before:-left-[2.9rem]"
-      title="Backend developer"
-      entityName="ACOMI de RL"
-      achievedOn={[2020, 2021]}
-      job={{
-        id: 1,
-        description: "Desarrollo de web API REST con C# y .Net Core 3.1.",
-      }}
-    />
-    <WorkExperienceItem
-      className="p-4 mb-4 shadow rounded-lg relative md:before:absolute md:before:size-4 md:before:bg-yellow-500 md:before:shadow-[0_0_0_8px_rgba(255,171,0,0.4)] md:before:rounded-lg md:before:top-1.5 md:before:-left-[1.7rem] lg:before:-left-[2.9rem]"
-      title="Backend developer"
-      entityName="ACOMI de RL"
-      achievedOn={[2020, 2021]}
-      job={{
-        id: 2,
-        description: "Desarrollo de web API REST con C# y .Net Core 3.1.",
-      }}
-    />
+    {
+      positions.map((position) => {
+        return (
+          <WorkExperienceItem
+            id={position.entryId}
+            className="p-4 mb-6 shadow rounded-lg relative md:before:absolute md:before:size-4 md:before:bg-yellow-500 md:before:shadow-[0_0_0_8px_rgba(255,171,0,0.4)] md:before:rounded-lg md:before:top-1.5 md:before:-left-[1.7rem] lg:before:-left-[2.9rem]"
+            title={position.title}
+            entityName={position.entity.name}
+            achievedOn={position.achievedOn}
+            link={`/positions/${position.entryId}`}
+            job={position.job}
+          />
+        );
+      })
+    }
   </SectionBody>
 </Section>

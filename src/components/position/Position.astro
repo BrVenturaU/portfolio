@@ -2,9 +2,9 @@
 import type { Job } from "../../models/JobModels";
 import type { SectionItem as SectionItemModel } from "../../models/SectionModels";
 import SectionItem from "../layout/SectionItem.astro";
-import JobProjects from "./JobProjects.astro";
-import JobTechs from "./JobTechs.astro";
-import JobResponsabilities from "./JobResponsabilities.astro";
+import PositionProjects from "./PositionProjects.astro";
+import PositionTechs from "./PositionTechs.astro";
+import PositionResponsabilities from "./PositionResponsabilities.astro";
 interface Props extends SectionItemModel {
   job: Job;
 }
@@ -22,9 +22,9 @@ const { className, title, entityName, achievedOn, job } = Astro.props;
     {job.description}
   </Fragment>
 
-  <JobResponsabilities responsabilities={job.responsabilities} />
+  <PositionResponsabilities responsabilities={job.responsabilities} />
 
-  <JobProjects projects={job.projects} />
+  <PositionProjects projects={job.projects ?? []} />
 
-  <JobTechs technologies={job.technologies} />
+  <PositionTechs technologies={job.technologies} />
 </SectionItem>
