@@ -2,14 +2,15 @@
 import Section from "../layout/Section.astro";
 import SectionBody from "../layout/SectionBody.astro";
 import SectionHeading from "../layout/SectionHeading.astro";
----
 
-<Section>
-  <SectionHeading title="Sobre Mi" subtitle="Elección profesional" />
-
-  <SectionBody>
-    <p class="text-lg">
-      ¡Hola!, mi nombre es Brandon Manuel Ventura Umaña soy un estudiante de
+const { lang } = Astro.props;
+const isSpanishLang = lang === "es";
+const info = {
+  title: isSpanishLang ? "Sobre mi" : "About me",
+  subtitle: isSpanishLang ? "Elección profesional" : "Professional choice",
+  descriptions: [
+    isSpanishLang
+      ? ` ¡Hola!, mi nombre es Brandon Manuel Ventura Umaña soy un estudiante de
       Ingeniería en Sistemas y Redes Informáticas actualmente egresado,
       entusiasta por la programación, siendo esta una de las actividades que más
       disfruto actualmente, en especial con todo aquello relacionado al
@@ -17,10 +18,10 @@ import SectionHeading from "../layout/SectionHeading.astro";
       programación. Me apasiona el análisis y diseño de software cuando se trata
       de crear nuevas soluciones de software. Siempre motivado por seguir
       aprendiendo de los demás y adquirir conocimientos de las últimas
-      tendencias tecnológicas.
-    </p>
-    <p class="mt-4 text-lg">
-      Mi primera experiencia laboral fué en el año 2020, 2 meses después de que
+      tendencias tecnológicas.`
+      : `Hello!, my name is Brandon Manuel Ventura Umaña I am a Computer Systems and Networking Engineering student, programming enthusiast, being this one of the activities I currently really enjoy, in special everything related to backend development and software architecture. I feel passionate doing software analysis and design when it is time to create new software solutions. I am always motivated to keep on learning from other people and acquire the knowledge of the latest technological trends.`,
+    isSpanishLang
+      ? `Mi primera experiencia laboral fué en el año 2020, 2 meses después de que
       comenzó la pandemia, fue un desafío para mí conseguir mi primer trabajo,
       pero pude lograrlo aprendiendo y poniendo en práctica mis conocimientos en
       el entorno .NET, consolidando así a lo largo de 3 años trabajando con .NET
@@ -28,7 +29,20 @@ import SectionHeading from "../layout/SectionHeading.astro";
       cliente como React, Vue, Astro y Javascript Vanilla para dar vida a los
       proyectos de software; mejorando mis habilidades con el uso de patrones de
       diseño, patrones arquitectónicos y principios de seguridad que hacen del
-      desarrollo un mundo asombroso de conocimiento ilimitado para mí.
-    </p>
+      desarrollo un mundo asombroso de conocimiento ilimitado para mí.`
+      : `I started working in 2020, 2 months after the pandemic had started, It was a challenge for me to get my first job, but I was able to achieve it putting in practice my skills and knowledge on the .NET environment, making on that way a solid 3 years of experience working with the .NET environment, also including technologies related to the client side like projects with Vanilla JS, React and Vue to build a lot of different software projects; improving my abilities using software design patterns, architectural design patterns and security principles that make software development an amazing world of unlimited knowledge for me.`,
+  ],
+};
+---
+
+<Section>
+  <SectionHeading title={info.title} subtitle={info.subtitle} />
+
+  <SectionBody>
+    {
+      info.descriptions.map((description) => (
+        <p class="text-lg first:mb-4">{description}</p>
+      ))
+    }
   </SectionBody>
 </Section>

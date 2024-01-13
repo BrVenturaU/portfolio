@@ -1,0 +1,27 @@
+id: 2
+description: Worked with multidisciplinary teams to application and multi-layer Web APIs maintenance, getting involved in the development, design and maintenance of technological solutions for POS.
+responsabilities:
+  - Web APIs development with .NET Core 5.
+  - Module creation with ASP .NET Core 5.
+  - Web APIs consume with Vanilla JS.
+  - WebPack integration in ASP .NET Core MVC projects.
+  - Multilayer applications design using design patterns like Unit of Work y Repository Pattern.
+technologies:
+  - .NET Core 3.1
+  - .NET 5
+  - ASP .NET Core MVC
+  - Entity Framework Core
+  - JavaScript
+  - WebPack
+  - Node and NPM
+  - Bootstrap
+  - Hangfire
+  - Signal R
+  - Twilio
+  - TwilioSendgrid
+  - SQL Server
+  - Postman
+  - Git and GitLab.
+projects:
+  - en/project-2
+  - en/project-3

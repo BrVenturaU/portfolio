@@ -1,0 +1,22 @@
+id: 1
+description: I was part of the design, development and maintenance of Web API using .NET Core. Applying security practices of the financial applications of the banking entity and standards established at the government level.
+responsabilities:
+  - Web API development with .NET Core 3.1.
+  - Unit testing with Visual Studio Tools.
+  - Web API documentation with Swagger.
+  - User session management with JWT token.
+  - "MFA integration with various authentication techniques and mechanisms like: device management, biometric auth, email confirmation and image selection."
+technologies:
+  - NET Core 3.1
+  - Entity Framework Core ORM
+  - Swagger
+  - CSV Helper
+  - JWT tokens
+  - UnitTesting Tools and Moq
+  - SQL Server
+  - Twilio Sendgrid
+  - Git and GitHub.
+projects:
+  - en/project-1
+
+

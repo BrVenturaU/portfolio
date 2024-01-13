@@ -2,6 +2,27 @@
 import { Image } from "astro:assets";
 import profileImg from "../../assets/images/profile.jpg";
 import Social from "../Social.astro";
+
+const { lang } = Astro.props;
+const isSpanishLang = lang === "es";
+const info = {
+  occupationText: isSpanishLang
+    ? "Desarrollador de Software"
+    : "Software Developer",
+  emailText: isSpanishLang ? "Correo" : "Email",
+  family: {
+    text: isSpanishLang ? "Estado familiar" : "Family state",
+    state: isSpanishLang ? "Soltero" : "Single",
+  },
+  birth: {
+    text: isSpanishLang ? "Nacimiento" : "Birth",
+    date: new Date(2000, 0, 16).toLocaleDateString(lang, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+  },
+};
 ---
 
 <section
@@ -14,22 +35,24 @@ import Social from "../Social.astro";
   </div>
   <h1 class="text-4xl font-bold text-center">Brandon Ventura</h1>
   <h2 class="text-2xl text-sky-600 text-center">
-    Desarrollador de Software
+    {info.occupationText}
   </h2>
   <dl class="my-8 text-center text-lg">
     <div class="flex gap-1.5 justify-center mb-4">
-      <dt class="font-bold uppercase">Nacimiento:</dt>
-      <dd>16 de enero del 2000</dd>
+      <dt class="font-bold uppercase">{info.birth.text}:</dt>
+      <dd>
+        {info.birth.date}
+      </dd>
     </div>
 
     <div class="flex gap-1 justify-center mb-4">
-      <dt class="font-bold uppercase">Correo:</dt>
+      <dt class="font-bold uppercase">{info.emailText}:</dt>
       <dd>brandonventura16@gmail.com</dd>
     </div>
 
     <div class="flex gap-1 justify-center">
-      <dt class="font-bold uppercase">Estado familiar:</dt>
-      <dd>Soltero</dd>
+      <dt class="font-bold uppercase">{info.family.text}:</dt>
+      <dd>{info.family.state}</dd>
     </div>
   </dl>
   <Social />

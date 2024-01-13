@@ -6,10 +6,21 @@ import PositionProjects from "./PositionProjects.astro";
 import PositionTechs from "./PositionTechs.astro";
 import PositionResponsabilities from "./PositionResponsabilities.astro";
 interface Props extends SectionItemModel {
+  lang: string;
   job: Job;
 }
 
-const { className, title, entityName, achievedOn, job } = Astro.props;
+const { className, title, entityName, achievedOn, job, lang } = Astro.props;
+const isSpanishLang = lang === "es";
+const info = {
+  responsabilitiesText: isSpanishLang
+    ? "Responsabilidades del puesto"
+    : "Job responsibilities",
+  projectsText: isSpanishLang
+    ? "Colaboración en proyectos"
+    : "Projects collaboration",
+  techsText: isSpanishLang ? "Tecnologías utilizadas" : "Used Technologies",
+};
 ---
 
 <SectionItem
@@ -22,9 +33,12 @@ const { className, title, entityName, achievedOn, job } = Astro.props;
     {job.description}
   </Fragment>
 
-  <PositionResponsabilities responsabilities={job.responsabilities} />
+  <PositionResponsabilities
+    title={info.responsabilitiesText}
+    responsabilities={job.responsabilities}
+  />
 
-  <PositionProjects projects={job.projects ?? []} />
+  <PositionProjects title={info.projectsText} projects={job.projects ?? []} />
 
-  <PositionTechs technologies={job.technologies} />
+  <PositionTechs title={info.techsText} technologies={job.technologies} />
 </SectionItem>

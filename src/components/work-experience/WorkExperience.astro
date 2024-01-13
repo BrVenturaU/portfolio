@@ -1,29 +1,38 @@
 ---
-import {
-  getCollection,
-  getEntries,
-  getEntry,
-  type CollectionEntry,
-} from "astro:content";
+import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Section from "../layout/Section.astro";
 import SectionBody from "../layout/SectionBody.astro";
 import SectionHeading from "../layout/SectionHeading.astro";
 import WorkExperienceItem from "./WorkItem.astro";
 import type { Position as PositionModel } from "../../models/JobModels";
 
-const positionCollection: CollectionEntry<"positions">[] =
-  await getCollection("positions");
+const { lang } = Astro.props;
+const isSpanishLang = lang === "es";
+
+const info = {
+  title: isSpanishLang ? "Experiencia de laboral" : "Work experience",
+  subtitle: isSpanishLang ? "Trabajos previos" : "Previous jobs",
+};
+
+const positionCollection: CollectionEntry<"positions">[] = await getCollection(
+  "positions",
+  ({ id }) => {
+    const [entryLang] = id.split("/");
+    return lang === entryLang;
+  }
+);
+
 const jobCollection: CollectionEntry<"jobs">[] = [];
 
-for (const position of positionCollection) {
-  const jobEntry = await getEntry("jobs", position.data.job);
+for (const positionEntry of positionCollection) {
+  const jobEntry = await getEntry("jobs", positionEntry.data.job);
   jobCollection.push(jobEntry);
 }
 
 const positions = positionCollection.map((positionEntry) => {
-  const positionJobEntry = jobCollection.find(
-    (job) => job.id === positionEntry.data.job
-  );
+  const positionJobEntry = jobCollection.find((job) => {
+    return job.id === positionEntry.data.job;
+  });
 
   const position: PositionModel = {
     id: positionEntry.data.id,
@@ -35,13 +44,14 @@ const positions = positionCollection.map((positionEntry) => {
       description: positionJobEntry?.data.description,
     },
   };
-
-  return { ...position, entryId: positionEntry.id };
+  const [_, id] = positionEntry.id.split("/");
+  const link = isSpanishLang ? `/positions/${id}` : `/en/positions/${id}`;
+  return { ...position, entryId: id, link };
 });
 ---
 
 <Section id="positions">
-  <SectionHeading title="Experiencia de laboral" subtitle="Trabajos Previos" />
+  <SectionHeading title={info.title} subtitle={info.subtitle} />
 
   <SectionBody
     className="md:relative md:before:absolute md:before:top-1.5 md:before:bottom-0 md:before:w-0.5 md:before:-left-5 md:before:bg-gray-300 lg:before:-left-10"
@@ -55,7 +65,7 @@ const positions = positionCollection.map((positionEntry) => {
             title={position.title}
             entityName={position.entity.name}
             achievedOn={position.achievedOn}
-            link={`/positions/${position.entryId}`}
+            link={position.link}
             job={position.job}
           />
         );

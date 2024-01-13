@@ -1,0 +1,27 @@
+id: 3
+description: Staff Augmentation assigned to the insurance company Asesuisa, being part of various projects related to its processes where responsibilities were equivalent between projects, performing both Backend and Frontend assigments.
+responsabilities:
+  - Microservices development .NET 6.
+  - Clean Architecture development.
+  - Implemented design patterns like Unit of Work, Repository Pattern, Mediator, Command, CQRS, Builder, Facade y Factory Method.
+  - "Stored Procedures maintenance for the databases: Sybase y SQL Server."
+  - Synchronous communication between microservices through HTTP calls.
+  - Microservices consume in applications built with React using Axios HTTP Client.
+  - Web API documentation with Swagger.
+  - Application deployment documentation.
+technologies:
+  - .NET Core 6
+  - Dapper MicroORM
+  - Swagger
+  - Automapper
+  - MediatR
+  - Sybase
+  - SQL Server
+  - React
+  - TypeScript
+  - Axios
+  - NodeJS
+  - Express
+  - Git and GitLab.
+projects:
+  - en/project-4

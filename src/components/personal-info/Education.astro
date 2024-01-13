@@ -5,12 +5,24 @@ import SectionBody from "../layout/SectionBody.astro";
 import SectionHeading from "../layout/SectionHeading.astro";
 import SectionItem from "../layout/SectionItem.astro";
 
-const educationCollection: CollectionEntry<"education">[] =
-  await getCollection("education");
+const { lang } = Astro.props;
+const isSpanishLang = lang === "es";
+const info = {
+  title: isSpanishLang ? "Educación" : "Education",
+  subtitle: isSpanishLang ? "Carrera académica" : "Academic career",
+}
+
+const educationCollection: CollectionEntry<"education">[] = await getCollection(
+  "education",
+  ({ id }) => {
+    const [entryLang] = id.split("/");
+    return lang === entryLang;
+  }
+);
 ---
 
 <Section>
-  <SectionHeading title="Educación" subtitle="Carrera académica" />
+  <SectionHeading title={info.title} subtitle={info.subtitle} />
 
   <SectionBody>
     {

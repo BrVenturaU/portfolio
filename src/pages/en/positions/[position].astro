@@ -1,15 +1,14 @@
 ---
-// TODO: Could create a template for this page
 import { type CollectionEntry, getCollection, getEntry } from "astro:content";
-import Position from "../../components/position/Position.astro";
-import BaseTemplate from "../../templates/BaseTemplate.astro";
+import Position from "../../../components/position/Position.astro";
+import BaseTemplate from "../../../templates/BaseTemplate.astro";
 import type {
   Position as PositionModel,
   Project as ProjectModel,
-} from "../../models/JobModels";
+} from "../../../models/JobModels";
 
 export async function getStaticPaths() {
-  const lang = "es";
+  const lang = "en";
   const positionCollection: CollectionEntry<"positions">[] =
     await getCollection("positions", ({ id }) => {
       const [entryLang] = id.split("/");
@@ -84,7 +83,7 @@ const { positionData, lang } = Astro.props;
       class="min-h-dvh relative md:grid md:grid-cols-8 lg:grid-cols-5 bg-white"
     >
       <a
-        href={`/#positions`}
+        href={`/en#positions`}
         class="px-2 fixed right-0 top-0 text-4xl transition-colors text-white bg-gray-400 rounded-bl-lg hover:bg-gray-300"
         ><span class="ion-close"></span></a
       >

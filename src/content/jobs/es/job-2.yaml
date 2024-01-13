@@ -23,5 +23,5 @@ technologies:
   - Postman
   - Git y GitLab para versionado de código.
 projects:
-  - project-2
-  - project-3
+  - es/project-2
+  - es/project-3

@@ -11,10 +11,7 @@ import Education from "../components/personal-info/Education.astro";
 import Technologies from "../components/personal-info/Technologies.astro";
 import bgImage from "../assets/images/background.jpg";
 
-/*
-  TODO:
-  - Add content (collections and individuals) languages (en, es).
-*/
+const lang = "es";
 ---
 
 <BaseTemplate pageTitle="Inicio">
@@ -26,19 +23,19 @@ import bgImage from "../assets/images/background.jpg";
 
   <Header />
 
-  <main transition:animate="slide" >
-    <PersonalInfo />
+  <main transition:animate="slide">
+    <PersonalInfo lang={lang} />
     <div class="bg-white">
-      <About />
+      <About lang={lang} />
     </div>
     <div class="bg-slate-950 text-white">
-      <Education />
+      <Education lang={lang} />
     </div>
     <div class="bg-white">
-      <WorkExperience />
+      <WorkExperience lang={lang} />
     </div>
     <div class="bg-slate-950 text-white">
-      <Technologies />
+      <Technologies lang={lang} />
     </div>
   </main>
   <Footer />

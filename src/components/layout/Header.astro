@@ -1,5 +1,14 @@
 ---
 import InfoItem from "./HeaderInfo.astro";
+const { lang } = Astro.props;
+const isSpanishLang = lang === "es";
+
+const info = {
+  phoneReplyDays: isSpanishLang ? "Lunes/Sabado" : "Monday/Saturday",
+  emailReplyDays: isSpanishLang
+    ? "Respondo en 24 horas"
+    : "Reply in 24 hours",
+};
 ---
 
 <header
@@ -15,13 +24,13 @@ import InfoItem from "./HeaderInfo.astro";
     className="justify-self-center"
     icon="ion-ios-telephone-outline"
     title="7352 1562"
-    description="Lunes/Sabado | 8:00 AM - 5:00 PM"
+    description={`${info.phoneReplyDays} | 8:00 AM - 5:00 PM`}
   />
 
   <InfoItem
     className="justify-self-end"
     icon="ion-ios-chatboxes-outline"
     title="brandonventura16@gmail.com"
-    description="Respondo en 24 horas"
+    description={info.emailReplyDays}
   />
 </header>

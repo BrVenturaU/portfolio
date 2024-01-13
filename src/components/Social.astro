@@ -1,12 +1,15 @@
 ---
 import SocialItem from "./SocialItem.astro";
+const { lang } = Astro.props;
+
+const cv =
+  lang === "es"
+    ? "/documents/CurriculumVitaeEspañol.pdf"
+    : "/documents/CurriculumVitaeEnglish.pdf";
 ---
 
 <ul class="flex justify-center gap-4">
-  <SocialItem
-    url="/documents/CurriculumVitaeEspañol.pdf"
-    icon="ion-document-text"
-  />
+  <SocialItem url={cv} icon="ion-document-text" />
   <SocialItem url="https://github.com/BrVenturaU/" icon="ion-social-github" />
   <SocialItem
     url="https://www.linkedin.com/in/brandon-manuel-v-584455124/"
