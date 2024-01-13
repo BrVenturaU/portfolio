@@ -1,5 +1,16 @@
 import { z, defineCollection, reference } from "astro:content";
 
+const educationCollection = defineCollection({
+    type: 'data',
+    schema: z.object({
+        id: z.number(),
+        title: z.string(),
+        entityName: z.string(),
+        description: z.string(),
+        achievedOn: z.tuple([z.number(), z.number()])
+    })
+})
+
 const positionCollection = defineCollection({
     type: 'data',
     schema: ({ image: imageFn }) => z.object({
@@ -38,6 +49,7 @@ const projectCollection = defineCollection({
 })
 
 export const collection = {
+    education: educationCollection,
     positions: positionCollection,
     jobs: jobCollection,
     projects: projectCollection
