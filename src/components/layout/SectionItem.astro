@@ -3,6 +3,7 @@ import type { SectionItem } from "../../models/SectionModels";
 interface Props extends SectionItem {}
 
 const {
+  id,
   className,
   title,
   entityName,
@@ -10,9 +11,7 @@ const {
 } = Astro.props;
 ---
 
-<article
-  class:list={[className]}
->
+<article id={id} class:list={[className]}>
   <h4 class="uppercase font-semibold text-xl">
     {title}
   </h4>
