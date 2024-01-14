@@ -10,7 +10,9 @@ const isSpanishLang = lang === "es";
 
 const info = {
   title: isSpanishLang ? "Tecnologías" : "Technologies",
-  subtitle: isSpanishLang ? "Lenguajes, frameworks y herramientas" : "Languages, frameworks and tools",
+  subtitle: isSpanishLang
+    ? "Lenguajes, frameworks y herramientas"
+    : "Languages, frameworks and tools",
 };
 
 const imagesData = import.meta.glob<{ default: ImageMetadata }>(
@@ -30,10 +32,7 @@ const images = Object.keys(imagesData).map((imagePath) => {
 ---
 
 <Section>
-  <SectionHeading
-    title={info.title}
-    subtitle={info.subtitle}
-  />
+  <SectionHeading title={info.title} subtitle={info.subtitle} />
 
   <SectionBody
     className="technologies flex justify-center flex-wrap gap-4 duration-300 transition-all translate-y-2/4 opacity-0"
@@ -49,6 +48,7 @@ const images = Object.keys(imagesData).map((imagePath) => {
 <script>
   document.addEventListener("astro:page-load", () => {
     const technologiesEl = document.querySelector(".technologies");
+    if (technologiesEl === null) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -62,7 +62,7 @@ const images = Object.keys(imagesData).map((imagePath) => {
         threshold: 0.4,
       }
     );
-
+    
     observer.observe(technologiesEl);
   });
 </script>
