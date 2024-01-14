@@ -1,0 +1,44 @@
+---
+import type { Job } from "../../models/JobModels";
+import type { SectionItem as SectionItemModel } from "../../models/SectionModels";
+import SectionItem from "../layout/SectionItem.astro";
+import PositionProjects from "./PositionProjects.astro";
+import PositionTechs from "./PositionTechs.astro";
+import PositionResponsabilities from "./PositionResponsabilities.astro";
+interface Props extends SectionItemModel {
+  lang: string;
+  job: Job;
+}
+
+const { className, title, entityName, achievedOn, job, lang } = Astro.props;
+const isSpanishLang = lang === "es";
+const info = {
+  responsabilitiesText: isSpanishLang
+    ? "Responsabilidades del puesto"
+    : "Job responsibilities",
+  projectsText: isSpanishLang
+    ? "Colaboración en proyectos"
+    : "Projects collaboration",
+  techsText: isSpanishLang ? "Tecnologías utilizadas" : "Used Technologies",
+};
+---
+
+<SectionItem
+  className={className}
+  title={title}
+  entityName={entityName}
+  achievedOn={achievedOn}
+>
+  <Fragment slot="description">
+    {job.description}
+  </Fragment>
+
+  <PositionResponsabilities
+    title={info.responsabilitiesText}
+    responsabilities={job.responsabilities}
+  />
+
+  <PositionProjects title={info.projectsText} projects={job.projects ?? []} />
+
+  <PositionTechs title={info.techsText} technologies={job.technologies} />
+</SectionItem>

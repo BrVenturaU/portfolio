@@ -1,0 +1,11 @@
+---
+const { className, icon, title, description } = Astro.props;
+---
+
+<div class:list={["flex items-center gap-4 my-2 first-of-type:mt-0 last-of-type:mb-0", className]}>
+  <span class={`text-2xl ${icon}`}></span>
+  <div class="flex justify-between basis-full flex-wrap sm:block">
+    <p class="font-bold">{title}</p>
+    <p>{description}</p>
+  </div>
+</div>

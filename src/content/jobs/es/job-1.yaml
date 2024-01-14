@@ -1,0 +1,20 @@
+id: 1
+description: Responsable de colaborar con el diseño, desarrollo y mantenimiento de Web API utilizando .NET Core. Aplicando practicas de seguridad de las aplicaciones financieras de la entidad bancaria y normas establecidas a nivel gubernamental.
+responsabilities:
+  - Desarrollo de Web API con .NET Core 3.1.
+  - Desarrollo de pruebas unitarias con Visual Studio Tools.
+  - Documentación de Web API con Swagger.
+  - Token JWT para la administración de las sesiones de usuario.
+  - "Integración de MFA con técnicas y mecanismos de autenticación como: administración de dispositivos, autenticación biométrica, confirmación por correo electrónico y selección de imágenes."
+technologies:
+  - NET Core 3.1
+  - Entity Framework Core ORM
+  - Swagger
+  - CSV Helper
+  - JWT tokens
+  - UnitTesting Tools and Moq
+  - SQL Server
+  - Twilio Sendgrid
+  - Git y GitHub para versionado de código.
+projects:
+  - es/project-1

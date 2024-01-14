@@ -1,0 +1,36 @@
+---
+import LangSelector from "../LangSelector.astro";
+import InfoItem from "./HeaderInfo.astro";
+const { lang } = Astro.props;
+const isSpanishLang = lang === "es";
+
+const info = {
+  phoneReplyDays: isSpanishLang ? "Lunes/Sabado" : "Monday/Saturday",
+  emailReplyDays: isSpanishLang ? "Respondo en 24 horas" : "Reply in 24 hours",
+};
+---
+
+<header
+  class="relative bg-sky-700 mx-4 mt-8 pt-7 pb-5 px-5 text-white rounded-md shadow motion-safe:animate-slide-down animate-duration-250 sm:w-10/12 sm:mx-auto sm:grid sm:grid-cols-2 lg:w-10/12 lg:grid-cols-3 xl:w-9/12"
+>
+  <LangSelector />
+  <InfoItem
+    icon="ion-ios-location-outline"
+    title="El Salvador"
+    description="Santa Rosa de Lima, La Unión"
+  />
+
+  <InfoItem
+    className="justify-self-center"
+    icon="ion-ios-telephone-outline"
+    title="7352 1562"
+    description={`${info.phoneReplyDays} | 8:00 AM - 5:00 PM`}
+  />
+
+  <InfoItem
+    className="justify-self-end"
+    icon="ion-ios-chatboxes-outline"
+    title="brandonventura16@gmail.com"
+    description={info.emailReplyDays}
+  />
+</header>

@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,100&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root{
+    --a-duration: 0s;
+    --a-delay: 0s;
+  }
+  html {
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+@layer utilities {
+  .animate-duration-0 {
+    --a-duration: 0s;
+    animation-duration: var(--a-duration);
+  }
+
+  .animate-duration-100 {
+    --a-duration: 100ms;
+    animation-duration: var(--a-duration);
+  }
+
+  .animate-duration-150 {
+    --a-duration: 150ms;
+    animation-duration: var(--a-duration);
+  }
+
+  .animate-duration-200 {
+    --a-duration: 200ms;
+    animation-duration:var(--a-duration);
+  }
+
+  .animate-duration-250 {
+    --a-duration: 250ms;
+    animation-duration:var(--a-duration);
+  }
+
+  .animate-duration-300 {
+    --a-duration: 300ms;
+    animation-duration: var(--a-duration);
+  }
+
+  .animate-delay-0 {
+    --a-delay: 0ms;
+    animation-delay: var(--a-delay);
+  }
+
+  .animate-delay-100 {
+    --a-delay: 100ms;
+    animation-delay: var(--a-delay);
+  }
+
+  .animate-delay-150 {
+    --a-delay: 150ms;
+    animation-delay: var(--a-delay);
+  }
+
+  .animate-delay-200 {
+    --a-delay: 200ms;
+    animation-delay: var(--a-delay);
+  }
+
+  .animate-delay-250 {
+    --a-delay: 250ms;
+    animation-delay: var(--a-delay);
+  }
+
+  .animate-delay-300 {
+    --a-delay: 300ms;
+    animation-delay: var(--a-delay);
+  }
+}

@@ -1,16 +1,42 @@
 ---
+import { Image } from "astro:assets";
+import BaseTemplate from "../templates/BaseTemplate.astro";
 
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import PersonalInfo from "../components/personal-info/PersonalInfo.astro";
+import About from "../components/personal-info/About.astro";
+import WorkExperience from "../components/work-experience/WorkExperience.astro";
+import Education from "../components/personal-info/Education.astro";
+import Technologies from "../components/personal-info/Technologies.astro";
+import bgImage from "../assets/images/background.jpg";
+
+const lang = "es";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseTemplate pageTitle="Inicio">
+  <Image
+    src={bgImage}
+    alt="A desktop computer with a laptop on the side."
+    class="size-full absolute top-0 -z-10 blur-sm"
+  />
+
+  <Header lang={lang} />
+
+  <main transition:animate="slide">
+    <PersonalInfo lang={lang} />
+    <div class="bg-white">
+      <About lang={lang} />
+    </div>
+    <div class="bg-slate-950 text-white">
+      <Education lang={lang} />
+    </div>
+    <div class="bg-white">
+      <WorkExperience lang={lang} />
+    </div>
+    <div class="bg-slate-950 text-white">
+      <Technologies lang={lang} />
+    </div>
+  </main>
+  <Footer />
+</BaseTemplate>

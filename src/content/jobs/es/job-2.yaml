@@ -1,0 +1,27 @@
+id: 2
+description: Colaboración con equipos multidisciplinarios para el mantenimiento de aplicaciones y Web APIs multicapa involucrándome en el desarrollo, diseño y mantenimiento de soluciones tecnológicas para puntos de venta.
+responsabilities:
+  - Desarrollo de Web APIs con .NET Core 5.
+  - Creación de módulos con ASP .NET Core 5.
+  - Consumo de Web APIs con Vanilla JS.
+  - Integración de WebPack en ASP .NET Core MVC.
+  - Diseño de aplicaciones multicapa utilizando patrones de diseño como Unit of Work y Repository Pattern.
+technologies:
+  - .NET Core 3.1
+  - .NET 5
+  - ASP .NET Core MVC
+  - Entity Framework Core
+  - JavaScript
+  - WebPack
+  - Node and NPM
+  - Bootstrap
+  - Hangfire
+  - Signal R
+  - Twilio
+  - TwilioSendgrid
+  - SQL Server
+  - Postman
+  - Git y GitLab para versionado de código.
+projects:
+  - es/project-2
+  - es/project-3

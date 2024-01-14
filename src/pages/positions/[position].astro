@@ -1,0 +1,118 @@
+---
+// TODO: Could create a template for this page
+import { type CollectionEntry, getCollection, getEntry } from "astro:content";
+import Position from "../../components/position/Position.astro";
+import BaseTemplate from "../../templates/BaseTemplate.astro";
+import type {
+  Position as PositionModel,
+  Project as ProjectModel,
+} from "../../models/JobModels";
+
+export async function getStaticPaths() {
+  const lang = "es";
+  const positionCollection: CollectionEntry<"positions">[] =
+    await getCollection("positions", ({ id }) => {
+      const [entryLang] = id.split("/");
+      return lang === entryLang;
+    });
+  const jobCollection: CollectionEntry<"jobs">[] = [];
+  let projectCollection: CollectionEntry<"projects">[] = [];
+
+  for (const positionEntry of positionCollection) {
+    const jobEntry: CollectionEntry<"jobs"> = await getEntry(
+      "jobs",
+      positionEntry.data.job
+    );
+
+    const jobProjectCollection = await getCollection("projects", ({ id }) => {
+      return jobEntry.data.projects.includes(id);
+    });
+
+    jobCollection.push(jobEntry);
+    projectCollection = projectCollection.concat(jobProjectCollection);
+  }
+
+  const routes = positionCollection.map((positionEntry) => {
+    const positionJobEntry = jobCollection.find(
+      (job) => job.id === positionEntry.data.job
+    );
+    const jobProjectCollection = projectCollection.filter((project) =>
+      positionJobEntry?.data.projects.includes(project.id)
+    );
+
+    const position: PositionModel = {
+      id: positionEntry.data.id,
+      title: positionEntry.data.title,
+      entity: positionEntry.data.entity,
+      achievedOn: positionEntry.data.achievedOn,
+      job: {
+        id: positionJobEntry?.data.id,
+        description: positionJobEntry?.data.description,
+        responsabilities: positionJobEntry?.data.responsabilities,
+        technologies: positionJobEntry?.data.technologies,
+        projects: jobProjectCollection.map((project): ProjectModel => {
+          return {
+            id: project.data.id,
+            name: project.data.name,
+            responsabilities: project.data.responsabilities,
+          };
+        }),
+      },
+    };
+
+    return {
+      params: {
+        position: positionEntry.id.split("/")[1],
+      },
+      props: {
+        lang,
+        positionData: { ...position },
+      },
+    };
+  });
+
+  return routes;
+}
+
+const { position } = Astro.params;
+const { positionData, lang } = Astro.props;
+---
+<BaseTemplate pageTitle={positionData.title} showBgImage>
+  <main transition:animate="slide" class="min-h-dvh">
+    <section
+      class="min-h-dvh relative md:grid md:grid-cols-8 lg:grid-cols-5 bg-white"
+    >
+      <a
+        href={`/#positions`}
+        class="px-4 py-2 fixed right-0 top-0 z-10 text-2xl transition-colors text-white bg-gray-400 rounded-bl-lg shadow hover:bg-gray-300"
+        ><span class="ion-close"></span></a
+      >
+      <div class="relative md:col-span-3 lg:col-span-2">
+        <div
+          class="size-full absolute bg-gradient-to-b from-sky-400 to-indigo-600 opacity-35"
+        >
+        </div>
+        <p
+          class="block w-full p-4 absolute top-1/2 -translate-y-1/2 font-extrabold italic text-center text-2xl text-white bg-gray-600 bg-opacity-35"
+        >
+          {positionData.entity.name}
+        </p>
+        <img
+          src={positionData.entity.image.url}
+          alt={positionData.entity.image.alt}
+          class="h-full object-cover"
+        />
+      </div>
+
+      <div class="px-8 py-6 md:col-span-5 lg:col-span-3">
+        <Position
+          lang={lang}
+          title={positionData.title}
+          entityName={positionData.entity.name}
+          achievedOn={positionData.achievedOn}
+          job={positionData.job}
+        />
+      </div>
+    </section>
+  </main>
+</BaseTemplate>

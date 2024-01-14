@@ -1,0 +1,11 @@
+id: 3
+title: Web Developer
+entity:
+  name: Elaniin Tech Company
+  image:
+    url: "/assets/images/companies/company_elaniin.jpg"
+    alt: The image depicts a room with a majorelle blue wall, a table, and chairs of one of the company's room.
+achievedOn:
+  - 2022
+  - 2023
+job: es/job-3

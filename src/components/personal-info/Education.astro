@@ -1,0 +1,43 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Section from "../layout/Section.astro";
+import SectionBody from "../layout/SectionBody.astro";
+import SectionHeading from "../layout/SectionHeading.astro";
+import SectionItem from "../layout/SectionItem.astro";
+
+const { lang } = Astro.props;
+const isSpanishLang = lang === "es";
+const info = {
+  title: isSpanishLang ? "Educación" : "Education",
+  subtitle: isSpanishLang ? "Carrera académica" : "Academic career",
+}
+
+const educationCollection: CollectionEntry<"education">[] = await getCollection(
+  "education",
+  ({ id }) => {
+    const [entryLang] = id.split("/");
+    return lang === entryLang;
+  }
+);
+---
+
+<Section>
+  <SectionHeading title={info.title} subtitle={info.subtitle} />
+
+  <SectionBody>
+    {
+      educationCollection.map((educationEntry) => (
+        <SectionItem
+          className="my-8 first:mt-0 last:mb-0"
+          title={educationEntry.data.title}
+          entityName={educationEntry.data.entityName}
+          achievedOn={educationEntry.data.achievedOn}
+        >
+          <Fragment slot="description">
+            {educationEntry.data.description}
+          </Fragment>
+        </SectionItem>
+      ))
+    }
+  </SectionBody>
+</Section>

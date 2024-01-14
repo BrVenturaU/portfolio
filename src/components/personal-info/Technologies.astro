@@ -1,0 +1,68 @@
+---
+import type { ImageMetadata } from "astro";
+import Section from "../layout/Section.astro";
+import SectionHeading from "../layout/SectionHeading.astro";
+import TechnologyItem from "./TechnologyItem.astro";
+import SectionBody from "../layout/SectionBody.astro";
+
+const { lang } = Astro.props;
+const isSpanishLang = lang === "es";
+
+const info = {
+  title: isSpanishLang ? "Tecnologías" : "Technologies",
+  subtitle: isSpanishLang
+    ? "Lenguajes, frameworks y herramientas"
+    : "Languages, frameworks and tools",
+};
+
+const imagesData = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/logos/tech-*.{jpeg,jpg,png,gif}"
+);
+const images = Object.keys(imagesData).map((imagePath) => {
+  const imagePathParts = imagePath.split("/");
+  const file = imagePathParts[imagePathParts.length - 1];
+  const [fileName, extension] = file.split(".");
+  return {
+    fileName,
+    extension,
+    src: imagePath,
+    imageImport: imagesData[imagePath],
+  };
+});
+---
+
+<Section>
+  <SectionHeading title={info.title} subtitle={info.subtitle} />
+
+  <SectionBody
+    className="technologies flex justify-center flex-wrap gap-4 duration-300 transition-all translate-y-2/4 opacity-0"
+  >
+    {
+      images.map((image) => {
+        return <TechnologyItem image={image} />;
+      })
+    }
+  </SectionBody>
+</Section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const technologiesEl = document.querySelector(".technologies");
+    if (technologiesEl === null) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("translate-y-2/4", "opacity-0");
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        threshold: 0.4,
+      }
+    );
+    
+    observer.observe(technologiesEl);
+  });
+</script>

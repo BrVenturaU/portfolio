@@ -1,0 +1,10 @@
+---
+const { responsabilities, title, className } = Astro.props;
+---
+
+<div class="my-4">
+  <h6 class="font-semibold text-sky-600">{title}</h6>
+  <ul class:list={["ml-8 list-disc", className]}>
+    {responsabilities.map((responsability) => <li>{responsability}</li>)}
+  </ul>
+</div>
