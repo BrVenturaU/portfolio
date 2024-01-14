@@ -1,0 +1,23 @@
+<select class="p-1 absolute top-0 -right-2 -translate-y-1/2 text-white rounded bg-sky-500 cursor-pointer hover:bg-sky-400">
+  <option value="/">Español</option>
+  <option value="/en">English</option>
+</select>
+
+<script>
+  import { navigate } from "astro:transitions/client";
+  document.addEventListener("astro:page-load", (evt) => {
+    const targetEl = evt.target as Document;
+    const langSelector = targetEl.querySelector("select");
+
+    if (langSelector === null) return;
+
+    const href = localStorage.getItem("lang") ?? "/";
+    langSelector.value = href;
+
+    langSelector.addEventListener("change", (evt) => {
+      const href = (evt.target as HTMLSelectElement).value;
+      localStorage.setItem("lang", href);
+      navigate(href);
+    });
+  });
+</script>
